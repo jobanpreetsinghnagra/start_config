@@ -1,5 +1,3 @@
-
-
 # 🔧 Setup Script
 
 Automatically detects your operating system (Linux, macOS, or Windows with WSL/PowerShell) and installs essential tools and environments.
@@ -17,11 +15,28 @@ Make sure you have:
 
 ## 🚀 Installation
 
+### For Linux/macOS (using setup.sh)
+
 Make the setup script executable and run it:
 
 ```bash
 chmod +x setup.sh
 ./setup.sh
+```
+
+### For Windows (using setup.ps1)
+
+Run the PowerShell script with execution policy bypass:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+.\setup.ps1
+```
+
+Or alternatively, run it directly:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File setup.ps1
 ```
 
 ---
@@ -32,7 +47,7 @@ chmod +x setup.sh
 
 * `wget`
 * `curl`
-* `chocolatey` 
+* `chocolatey` (Windows only)
 
 ### 2. Developer Tools
 
@@ -62,9 +77,16 @@ notebook
 
 Once installation completes:
 
+### Linux/macOS
 ```bash
-source ~/.bashrc (linux)
-source ~/.bash_profile (MacOS)
+source ~/.bashrc       # Linux
+source ~/.bash_profile # macOS
+conda activate J
+jupyter notebook
+```
+
+### Windows
+```powershell
 conda activate J
 jupyter notebook
 ```
@@ -77,7 +99,8 @@ This will launch Jupyter Notebook in your default browser, with all packages rea
 
 ```
 .
-├── setup.sh      # The installation script
+├── setup.sh      # The installation script (Linux/macOS)
+├── setup.ps1     # The installation script (Windows)
 └── README.md     # This guide
 ```
 
