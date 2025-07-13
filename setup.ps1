@@ -258,19 +258,19 @@ function New-CondaEnvironment {
         
         # Create environment
         Write-Status "Creating conda environment 'J' with Python 3.9..."
-        conda create -n J python=3.9 -y
+        conda create -n J python=3.13 -y
         
         # Install packages using conda run
         Write-Status "Installing packages in environment 'J'..."
         conda run -n J python -m pip install --upgrade pip
-        conda run -n J pip install numpy pandas matplotlib seaborn gradio
+        conda run -n J pip install numpy pandas matplotlib seaborn gradio notebook
         
         Write-Success "Conda environment 'J' created successfully with all required packages!"
         Write-Status "To activate the environment, run: conda activate J"
         
         # Show installed packages
         Write-Status "Installed packages in environment 'J':"
-        $packages = conda run -n J pip list | Select-String -Pattern "(numpy|pandas|matplotlib|seaborn|gradio|pip)"
+        $packages = conda run -n J pip list | Select-String -Pattern "(numpy|pandas|matplotlib|seaborn|gradio|pip|notebook)"
         $packages | ForEach-Object { Write-Host "  $_" -ForegroundColor $WHITE }
     }
     catch {
